@@ -6,7 +6,7 @@
 <body>  
 <div class="contents">
 <div class="textblock"><p>web: <a href="http://www.dbcloud.org">http://www.dbcloud.org</a></p>
-<p>mail: <a href="#" onclick="location.href='mai'+'lto:'+'dbc'+'lo'+'ud@'+'cs'+'mak'+'e.'+'com'; return false;">dbclo<span style="display: none;">.nosp@m.</span>ud@c<span style="display: none;">.nosp@m.</span>smake<span style="display: none;">.nosp@m.</span>.com</a></p>
+<p>mail: dbcloud@csmake.com</p>
 <p>Copyright (c) 2017, dbcloud.org and/or its affiliates. All rights reserved.</p>
 <h1><a class="anchor" id="sec0"></a>
 About dbcloud</h1>
