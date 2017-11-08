@@ -1,0 +1,17 @@
+/web/doc/
+/build/
+/lib/javaee-endorsed-api-7.0/
+/lib/CopyLibs/
+csmake.cmd
+csmake.jar
+csmake/org.dbcloud.mongodb.MongoCollection.js
+lib/nblibraries.properties
+lib/ojdbc6.jar
+lib/sqljdbc41.jar
+lib/sqlite-jdbc-3.14.2.1.jar
+compiler.jar
+csmake.dbcloud.xml
+Doxyfile
+src/java/org/dbcloud/mongodb/web.xml
+nbproject/private/private.properties
+nbproject/private/private.xml

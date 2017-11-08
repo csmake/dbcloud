@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+  
+    <servlet>
+        <servlet-name>MongoCollectionServlet</servlet-name>
+        <servlet-class>org.dbcloud.mongodb.MongoCollectionServlet</servlet-class>
+        <init-param>
+            <param-name>dbhost</param-name>
+            <param-value>127.0.0.1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbport</param-name>
+            <param-value>27017</param-value>
+        </init-param> 
+        <init-param>
+            <param-name>db</param-name>
+            <param-value>test</param-value>
+        </init-param>
+        <init-param>
+            <param-name>connection</param-name>
+            <param-value>test</param-value>
+        </init-param>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value></param-value>
+        </init-param> 
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MongoCollectionServlet</servlet-name>
+        <url-pattern>/org.dbcloud.mongodb.MongoCollection</url-pattern>
+    </servlet-mapping> 
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
