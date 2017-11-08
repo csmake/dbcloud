@@ -1,6 +1,6 @@
-![webmongo](https://avatars1.githubusercontent.com/u/17017373?s=460&v=4)
+![dbcloud](https://avatars1.githubusercontent.com/u/17017373?s=460&v=4)
 
-# webmongo
+# dbcloud
 
 ## About us
 
@@ -10,13 +10,13 @@ You can do almost invoke on mongodb through the javascript API in browser.
 
 The client javascript api support `IE6.0+ Chrome FireFox and Wechat`
 
-web: http://webmongo.dbcloud.org
+web: http://dbcloud.dbcloud.org
 
-mail: webmongo@csmake.com
+mail: dbcloud@csmake.com
 
 ## Roadmap
 
-* 1.0: mongodb support.
+* 1.0: mongodb support. see [webmongo](https://github.com/csmake/webmongo)
 
 * 1.1: jdbc webclient javascript api support.
 
