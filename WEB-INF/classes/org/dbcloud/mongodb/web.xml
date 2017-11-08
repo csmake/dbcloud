@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">   
+<TimeStamp>Tue Nov 07 17:43:15 CST 2017</TimeStamp>
+<servlet>
+<servlet-name>MongoCollection</servlet-name>
+<servlet-class>org.dbcloud.mongodb.MongoCollectionServlet</servlet-class>
+<init-param>
+<param-name>guid</param-name>
+<param-value>class</param-value>
+</init-param>
+</servlet>
+<servlet-mapping>
+<servlet-name>MongoCollection</servlet-name>
+<url-pattern>org.dbcloud.mongodb.MongoCollection</url-pattern>
+</servlet-mapping>
+</web-app>
