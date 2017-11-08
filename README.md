@@ -1,98 +1,39 @@
-# dbcloud
-web: http://www.dbcloud.org
-mail: dbcloud@csmake.com
-Copyright (c) 2017, dbcloud.org and/or its affiliates. All rights reserved.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  </head>
+<body>  
+<div class="contents">
+<div class="textblock"><p>web: <a href="http://www.dbcloud.org">http://www.dbcloud.org</a></p>
+<p>mail: <a href="#" onclick="location.href='mai'+'lto:'+'dbc'+'lo'+'ud@'+'cs'+'mak'+'e.'+'com'; return false;">dbclo<span style="display: none;">.nosp@m.</span>ud@c<span style="display: none;">.nosp@m.</span>smake<span style="display: none;">.nosp@m.</span>.com</a></p>
+<p>Copyright (c) 2017, dbcloud.org and/or its affiliates. All rights reserved.</p>
+<h1><a class="anchor" id="sec0"></a>
+About dbcloud</h1>
+<p>Accessing server-side database through JavaScript API.</p>
+<p>database support <b>Mongodb Oracle MySQL sqlserver SQLite and so on</b>.</p>
+<p>Client javascript api support IE6.0+ Chrome FireFox Wechat</p>
+<h1><a class="anchor" id="sec1"></a>
+start the basic sample</h1>
+<p>Step 1:run mongod first.</p>
+<p>Step 2:put dbcloud.war in your servlet server webapps ,Apache Tomcat8.0 , Glass Fish Server4.x and so on.</p>
+<p>Step 3:open browser(Chrome FireFox IE) and put <a href="http://localhost:8080/dbcloud/,">http://localhost:8080/dbcloud/,</a> The address may be different depending on your settings</p>
+<h1><a class="anchor" id="sec2"></a>
+roadmap</h1>
+<p>1.0: mongodb support.</p>
+<p>1.1: jdbc webclient javascript api support.</p>
+<p>1.2: SQLite support</p>
+<p>1.3: MySQL support</p>
+<p>1.4: Sql server support</p>
+<p>1.5: Oracle support</p>
+<p>...</p>
+<h1><a class="anchor" id="sec3"></a>
+Start to write your web application</h1>
+<p>Step 1:copy <a class="el" href="_mongo_collection_8java_source.html">MongoCollection.java</a> and <a class="el" href="_mongo_collection_servlet_8java_source.html">MongoCollectionServlet.java</a> from dbcloud.war /src/java/.. , into your src/java/org/dbcloud/mongodb</p>
+<p>Step 2:copy all *.js files in dbcloud.war /js to your js directory. JQuery is necessary. IE6.0 need to use the 1.x version and json2.js is necessary.</p>
+<p>Step 3:edit the web.xml, mongodb example</p>
+<div class="fragment"><div class="line">&lt;servlet&gt;</div><div class="line">&lt;servlet-name&gt;MongoCollectionServlet&lt;/servlet-name&gt;</div><div class="line">&lt;servlet-<span class="keyword">class</span>&gt;<a class="code" href="namespaceorg.html">org</a>.<a class="code" href="namespaceorg_1_1dbcloud.html">dbcloud</a>.<a class="code" href="namespaceorg_1_1dbcloud_1_1mongodb.html">mongodb</a>.<a class="code" href="classorg_1_1dbcloud_1_1mongodb_1_1_mongo_collection_servlet.html">MongoCollectionServlet</a>&lt;/servlet-<span class="keyword">class</span>&gt;</div><div class="line">&lt;init-param&gt;</div><div class="line">&lt;param-name&gt;dbhost&lt;/param-name&gt;</div><div class="line">&lt;param-value&gt;127.0.0.1&lt;/param-value&gt;</div><div class="line">&lt;/init-param&gt;</div><div class="line">&lt;init-param&gt;</div><div class="line">&lt;param-name&gt;dbport&lt;/param-name&gt;</div><div class="line">&lt;param-value&gt;27017&lt;/param-value&gt;</div><div class="line">&lt;/init-param&gt;</div><div class="line">&lt;init-param&gt;</div><div class="line">&lt;param-name&gt;db&lt;/param-name&gt;</div><div class="line">&lt;param-value&gt;test&lt;/param-value&gt;</div><div class="line">&lt;/init-param&gt;</div><div class="line">&lt;init-param&gt;</div><div class="line">&lt;param-name&gt;connection&lt;/param-name&gt;</div><div class="line">&lt;param-value&gt;test&lt;/param-value&gt;</div><div class="line">&lt;/init-param&gt;</div><div class="line">&lt;init-param&gt;</div><div class="line">&lt;param-name&gt;user&lt;/param-name&gt;</div><div class="line">&lt;param-value&gt;&lt;/param-value&gt;</div><div class="line">&lt;/init-param&gt;</div><div class="line">&lt;init-param&gt;</div><div class="line">&lt;param-name&gt;password&lt;/param-name&gt;</div><div class="line">&lt;param-value&gt;&lt;/param-value&gt;</div><div class="line">&lt;/init-param&gt;</div><div class="line">&lt;/servlet&gt;</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">&lt;servlet-name&gt;MongoCollectionServlet&lt;/servlet-name&gt;</div><div class="line">&lt;url-pattern&gt;/<a class="code" href="namespaceorg.html">org</a>.<a class="code" href="namespaceorg_1_1dbcloud.html">dbcloud</a>.<a class="code" href="namespaceorg_1_1dbcloud_1_1mongodb.html">mongodb</a>.<a class="code" href="classorg_1_1dbcloud_1_1mongodb_1_1_mongo_collection.html">MongoCollection</a>&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></div><!-- fragment --> <p>Step 4 edit your html file, you can see the index.html in dbcloud.war</p>
+<div class="fragment"><div class="line">*﻿&lt;!DOCTYPE html&gt;</div><div class="line"> &lt;html &gt;</div><div class="line"> &lt;head&gt;</div><div class="line"> &lt;/head&gt;</div><div class="line"> &lt;body&gt;</div><div class="line"> &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">'log'</span>&gt;&lt;/div&gt;</div><div class="line"> &lt;/body&gt;</div><div class="line"> &lt;script src=<span class="stringliteral">"js/json2.js"</span> note=<span class="stringliteral">'for IE6.0 ,old browser'</span>&gt;&lt;/script&gt;</div><div class="line"> &lt;script src=<span class="stringliteral">"js/jQuery-1.12.4.min.js"</span> note=<span class="stringliteral">'for IE6.0 ,new version can use JQuery 2.x'</span>&gt;&lt;/script&gt;</div><div class="line"> &lt;script src=<span class="stringliteral">"js/org.dbcloud.mongodb.MongoCollection.js"</span>&gt;&lt;/script&gt;</div><div class="line"> &lt;script&gt;</div><div class="line"> <span class="keywordflow">try</span> {</div><div class="line">  <span class="keyword">function</span> log(msg) {</div><div class="line">   $(<span class="stringliteral">"#log"</span>).append(<span class="stringliteral">"&lt;p&gt;"</span> + msg + <span class="stringliteral">"&lt;/p&gt;"</span>);</div><div class="line">  }</div><div class="line">  var table = <span class="keyword">new</span> <a class="code" href="namespaceorg.html">org</a>.<a class="code" href="namespaceorg_1_1dbcloud.html">dbcloud</a>.<a class="code" href="namespaceorg_1_1dbcloud_1_1mongodb.html">mongodb</a>.<a class="code" href="classorg_1_1dbcloud_1_1mongodb_1_1_mongo_collection.html">MongoCollection</a>();</div><div class="line">  log(<span class="stringliteral">"clear table"</span>);</div><div class="line">  table.deleteMany({});</div><div class="line">  log(<span class="stringliteral">"insertOne and set options"</span>);</div><div class="line">  table.insertOne({name: <span class="stringliteral">'validation'</span>}, {validation: <span class="keyword">true</span>});</div><div class="line">  log(<span class="stringliteral">"count:"</span> + table.count({index: {<span class="stringliteral">'$exists'</span>: true}}));</div><div class="line">  var data = table.find({<span class="stringliteral">'index'</span>: {<span class="stringliteral">'$gt'</span>: 5}}, {projection: {<span class="stringliteral">'_id'</span>: 0}});</div><div class="line">  log(<span class="stringliteral">"find index &gt; 5 and exclude _id column"</span>);</div><div class="line">  log(JSON.stringify(data));</div><div class="line">  log(<span class="stringliteral">"replaceOne"</span>); table.replaceOne({name: <span class="stringliteral">'dbcloud'</span>}, {name: <span class="stringliteral">'replace'</span>,status: 0});</div><div class="line">  log(<span class="stringliteral">"updateMany with options "</span>); </div><div class="line">  table.updateMany({<span class="stringliteral">'index'</span>: {<span class="stringliteral">'$gt'</span>: 10}},{<span class="stringliteral">'$set'</span>: {name: <span class="stringliteral">'updateMany'</span>, status: 100, index: 100}}, {upsert: <span class="keyword">true</span>, validation: <span class="keyword">false</span>}); </div><div class="line">  log(<span class="stringliteral">"find all"</span>); </div><div class="line">  var data = table.find();</div><div class="line">  log(JSON.stringify(data));</div><div class="line">  log(<span class="stringliteral">'findOneAndUpdate'</span>); </div><div class="line">  log(JSON.stringify(table.findOneAndUpdate({<span class="stringliteral">'index'</span>: {<span class="stringliteral">'$gt'</span>: 10}}, {<span class="stringliteral">'$set'</span>: {name: <span class="stringliteral">'findOneAndUpdate'</span>}, <span class="stringliteral">'$inc'</span>: {index: -1}})));</div><div class="line">  table.close();</div><div class="line"> } <span class="keywordflow">catch</span> (e) { alert(e.message); }</div><div class="line"> &lt;/script&gt;</div><div class="line"> &lt;/html&gt;</div></div><!-- fragment --> </div></div>
 
-##About dbcloud
-Accessing server-side database through JavaScript API.
-database support Mongodb Oracle MySQL sqlserver SQLite and so on.
-Client javascript api support IE6.0+ Chrome FireFox Wechat
-
-##start the basic sample
-Step 1:run mongod first.
-Step 2:put dbcloud.war in your servlet server webapps ,Apache Tomcat8.0 , Glass Fish Server4.x and so on.
-Step 3:open browser(Chrome FireFox IE) and put http://localhost:8080/dbcloud/, The address may be different depending on your settings
-
-##roadmap
-1.0: mongodb support.
-1.1: jdbc webclient javascript api support.
-1.2: SQLite support
-1.3: MySQL support
-1.4: Sql server support
-1.5: Oracle support
-...
-
-##Start to write your web application
-Step 1:copy MongoCollection.java and MongoCollectionServlet.java from dbcloud.war /src/java/.. , into your src/java/org/dbcloud/mongodb
-Step 2:copy all *.js files in dbcloud.war /js to your js directory. JQuery is necessary. IE6.0 need to use the 1.x version and json2.js is necessary.
-Step 3:edit the web.xml, mongodb example
-<servlet>
-<servlet-name>MongoCollectionServlet</servlet-name>
-<servlet-class>org.dbcloud.mongodb.MongoCollectionServlet</servlet-class>
-<init-param>
-<param-name>dbhost</param-name>
-<param-value>127.0.0.1</param-value>
-</init-param>
-<init-param>
-<param-name>dbport</param-name>
-<param-value>27017</param-value>
-</init-param>
-<init-param>
-<param-name>db</param-name>
-<param-value>test</param-value>
-</init-param>
-<init-param>
-<param-name>connection</param-name>
-<param-value>test</param-value>
-</init-param>
-<init-param>
-<param-name>user</param-name>
-<param-value></param-value>
-</init-param>
-<init-param>
-<param-name>password</param-name>
-<param-value></param-value>
-</init-param>
-</servlet>
-<servlet-mapping>
-<servlet-name>MongoCollectionServlet</servlet-name>
-<url-pattern>/org.dbcloud.mongodb.MongoCollection</url-pattern>
-</servlet-mapping>
-
-Step 4 edit your html file, you can see the index.html in dbcloud.war
-*﻿<!DOCTYPE html>
- <html >
- <head>
- </head>
- <body>
- <div id='log'></div>
- </body>
- <script src="js/json2.js" note='for IE6.0 ,old browser'></script>
- <script src="js/jQuery-1.12.4.min.js" note='for IE6.0 ,new version can use JQuery 2.x'></script>
- <script src="js/org.dbcloud.mongodb.MongoCollection.js"></script>
- <script>
- try {
-  function log(msg) {
-   $("#log").append("<p>" + msg + "</p>");
-  }
-  var table = new org.dbcloud.mongodb.MongoCollection();
-  log("clear table");
-  table.deleteMany({});
-  log("insertOne and set options");
-  table.insertOne({name: 'validation'}, {validation: true});
-  log("count:" + table.count({index: {'$exists': true}}));
-  var data = table.find({'index': {'$gt': 5}}, {projection: {'_id': 0}});
-  log("find index > 5 and exclude _id column");
-  log(JSON.stringify(data));
-  log("replaceOne"); table.replaceOne({name: 'dbcloud'}, {name: 'replace',status: 0});
-  log("updateMany with options "); 
-  table.updateMany({'index': {'$gt': 10}},{'$set': {name: 'updateMany', status: 100, index: 100}}, {upsert: true, validation: false}); 
-  log("find all"); 
-  var data = table.find();
-  log(JSON.stringify(data));
-  log('findOneAndUpdate'); 
-  log(JSON.stringify(table.findOneAndUpdate({'index': {'$gt': 10}}, {'$set': {name: 'findOneAndUpdate'}, '$inc': {index: -1}})));
-  table.close();
- } catch (e) { alert(e.message); }
- </script>
- </html>
+</body>
+</html>
