@@ -4,15 +4,29 @@
 
 ## About us
 
-Accessing server-side mongodb through client javascript API. This project is a branch of [dbcloud](https://github.com/csmake/dbcloud)
+Accessing server-side database through JavaScript API.
 
-You can do almost invoke on mongodb through the javascript API in browser.
+Database support `Mongodb` `Oracle` `MySQL` `sqlserver` `SQLite`. 
+
+Client javascript api support `IE6.0+` `Chrome` `FireFox` `Wechat`
+
+You can do almost invoke on database through the javascript API in browser.
 
 The client javascript api support `IE6.0+ Chrome FireFox and Wechat`
 
-web: http://dbcloud.dbcloud.org
+web: http://www.dbcloud.org
 
 mail: dbcloud@csmake.com
+
+## Application scenarios
+
+* Rapid prototyping does not need to write server-side code.
+
+* Academic teaching and research, WYSIWYG
+
+* Enterprise internal application
+
+* Other applications that do not focus on the security of the database table structure.
 
 ## Roadmap
 
