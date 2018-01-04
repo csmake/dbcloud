@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-  
+    <servlet>
+        <servlet-name>MySQLStatement</servlet-name>
+        <servlet-class>org.dbcloud.mysql.StatementServlet</servlet-class>
+        <init-param>
+            <param-name>guid</param-name>
+            <param-value>class</param-value>
+        </init-param>
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.mysql.jdbc.Driver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>connection</param-name>
+            <param-value>jdbc:mysql://localhost:3306/wawa?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;failOverReadOnly=false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>abc{}!@#$%^</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MySQLStatement</servlet-name>
+        <url-pattern>/org.dbcloud.mysql.Statement</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>MongoCollectionServlet</servlet-name>
         <servlet-class>org.dbcloud.mongodb.MongoCollectionServlet</servlet-class>
@@ -28,6 +55,10 @@
             <param-name>password</param-name>
             <param-value></param-value>
         </init-param> 
+        <init-param>
+            <param-name>guid</param-name>
+            <param-value>class</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>MongoCollectionServlet</servlet-name>

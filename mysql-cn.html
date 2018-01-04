@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html >
+    <head>
+        <title>MySQL demo</title>
+    </head>
+    <body>
+        <div id='log'></div>
+    </body>
+    <script src="js/jQuery-1.12.4.js"></script>
+    <script src="js/org.dbcloud.mysql.Statement.js"></script> 
+    <script>
+
+        function log(msg) {
+            $("#log").append("<p>" + msg + "</p>");
+        }
+        try {
+            log("MySQL 测试:");
+            var stmt = new org.dbcloud.mysql.Statement(); //同步构造类实例           
+            if (stmt) {
+                var result;
+                log("创建数据库:" + JSON.stringify(stmt.execute("create table if not exists temp_user(name char(50) ,id int ) ")));
+                var start = new Date().getTime();
+                var total = 0;
+                for (var j = 0; j < 10; j++) {
+                    var sqls = [];
+                    for (var i = 0; i < 10; i++) {
+                        sqls.push("insert into temp_user(name,id) values('姓名" + i + "'," + i + ")");
+                        total++;
+                    }
+                    log("" + JSON.stringify(stmt.execute(sqls)) + "");
+                }
+                log((new Date().getTime() - start) / 1000 + "秒完成" + total + "记录插入!");
+
+                result = stmt.executeQuery("select name as 姓名,id as 编号 from temp_user", {document: true});
+                log("同步查询，并返回文档结构数据，可以作为json对象直接操作：");
+                log(JSON.stringify(result));
+                if (result.rows && result.rows.length > 0)
+                {
+                    log(result.rows[0].name);
+                }
+                log("同步查询，并返回二维表结构数据：");
+                result = stmt.executeQuery("select name as 姓名,id as 编号 from temp_user");
+                log(JSON.stringify(result));
+                if (result.error) {
+                    log("错误信息:" + result.error.message + "\n错误码:" + result.error.code + "\nSQL状态:" + result.error.SQLState);
+                }
+                stmt.executeQuery({done: function (r) {
+                        log("异步查询:" + JSON.stringify(r));
+                    }, fail: function (e) {
+                        alert(e.message);
+                    }, always: function () {
+                        alert("删除数据表并关闭数据链接");
+                        stmt.execute("drop table temp_user")
+                        //stmt.close();//如果服务器共用一个链接，则不应该关闭。
+                    }}, "select * from temp_user", {document: false});
+            }
+
+        } catch (e) {
+            log(e.message);
+        }
+    </script>
+
+</html>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2017 CSMAKE, Inc. 
+ * Copyright (c) 2012-2018 CSMAKE, Inc. 
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * Generate by csmake for java Wed Nov 08 17:23:57 CST 2017
+ * Generate by csmake for java Thu Jan 04 16:57:10 CST 2018
  * www.csmake.com
  */
 
@@ -275,10 +275,10 @@ var org;
                     var fn = 'find';
                     var asyn=isasync(arguments)?1:0;
                     if(arguments.length === (0+asyn) ){}
-                    else if(arguments.length === (3+asyn) && isType(arguments[0+asyn],0)&& isType(arguments[1+asyn],1)&& isType(arguments[2+asyn],1)){fn += '2';}
-                    else if(arguments.length === (4+asyn) && isType(arguments[0+asyn],0)&& isType(arguments[1+asyn],0)&& isType(arguments[2+asyn],1)&& isType(arguments[3+asyn],1)){fn += '3';}
+                    else if(arguments.length === (1+asyn) && isType(arguments[0+asyn],0)){fn += '2';}
+                    else if(arguments.length === (3+asyn) && isType(arguments[0+asyn],0)&& isType(arguments[1+asyn],1)&& isType(arguments[2+asyn],1)){fn += '3';}
                     else if(arguments.length === (2+asyn) && isType(arguments[0+asyn],0)&& isType(arguments[1+asyn],0)){fn += '4';}
-                    else if(arguments.length === (1+asyn) && isType(arguments[0+asyn],0)){fn += '5';}
+                    else if(arguments.length === (4+asyn) && isType(arguments[0+asyn],0)&& isType(arguments[1+asyn],0)&& isType(arguments[2+asyn],1)&& isType(arguments[3+asyn],1)){fn += '5';}
                     else{argsError(fn,arguments);}
                     if(asyn){
                         base.scall(fn,arguments); 
@@ -359,11 +359,11 @@ var org;
                         return ret;
                     }
                 };
-                base.insertMany = function (documents, options){
+                base.insertMany = function (documents){
                     var fn = 'insertMany';
                     var asyn=isasync(arguments)?1:0;
-                    if(arguments.length === (2+asyn) && isType(arguments[0+asyn],3)&& isType(arguments[1+asyn],0)){}
-                    else if(arguments.length === (1+asyn) && isType(arguments[0+asyn],3)){fn += '2';}
+                    if(arguments.length === (1+asyn) && isType(arguments[0+asyn],3)){}
+                    else if(arguments.length === (2+asyn) && isType(arguments[0+asyn],3)&& isType(arguments[1+asyn],0)){fn += '2';}
                     else{argsError(fn,arguments);}
                     if(asyn){
                         base.scall(fn,arguments); 
@@ -458,11 +458,11 @@ var org;
                         return ret;
                     }
                 };
-                base.insertOne = function (document, options){
+                base.insertOne = function (document){
                     var fn = 'insertOne';
                     var asyn=isasync(arguments)?1:0;
-                    if(arguments.length === (2+asyn) && isType(arguments[0+asyn],0)&& isType(arguments[1+asyn],0)){}
-                    else if(arguments.length === (1+asyn) && isType(arguments[0+asyn],0)){fn += '2';}
+                    if(arguments.length === (1+asyn) && isType(arguments[0+asyn],0)){}
+                    else if(arguments.length === (2+asyn) && isType(arguments[0+asyn],0)&& isType(arguments[1+asyn],0)){fn += '2';}
                     else{argsError(fn,arguments);}
                     if(asyn){
                         base.scall(fn,arguments); 

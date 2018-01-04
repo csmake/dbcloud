@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id='log'></div>
+    </body>
+    <script src="js/json2.js" note='for IE6.0 ,old browser'></script>
+    <script src="js/jQuery-1.12.4.min.js" note='for IE6.0 ,new version can use JQuery 2.x'></script>
+    <script src="js/org.dbcloud.mongodb.MongoCollection.js"></script>
+    <script>
+        try {
+            function log(msg) {
+                $("#log").append("<p>" + msg + "</p>");
+            }
+            var table = new org.dbcloud.mongodb.MongoCollection();
+            log("clear table");
+            table.deleteMany({});
+            log("insertOne and set options");
+            table.insertOne({name: 'validation'}, {validation: true});
+            log("count:" + table.count({index: {'$exists': true}}));
+            var data = table.find({'index': {'$gt': 5}}, {projection: {'_id': 0}});
+            log("find index > 5 and exclude _id column");
+            log(JSON.stringify(data));
+            log("replaceOne");
+            table.replaceOne({name: 'dbcloud'}, {name: 'replace', status: 0});
+            log("updateMany with options ");
+            table.updateMany({'index': {'$gt': 10}}, {'$set': {name: 'updateMany', status: 100, index: 100}}, {upsert: true, validation: false});
+            log("find all");
+            var data = table.find();
+            log(JSON.stringify(data));
+            log('findOneAndUpdate');
+            log(JSON.stringify(table.findOneAndUpdate({'index': {'$gt': 10}}, {'$set': {name: 'findOneAndUpdate'}, '$inc': {index: -1}})));
+            table.close();
+        } catch (e) {
+            alert(e.message);
+        }
+    </script>
+</html>>

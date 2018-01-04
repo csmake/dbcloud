@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012-2017 CSMAKE, Inc.
+ * Copyright (c) 2012-2018 CSMAKE, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * Generate by csmake for java Wed Nov 08 17:23:57 CST 2017
+ * Generate by csmake for java Thu Jan 04 16:57:11 CST 2018
  * support for: www.csmake.com
  */
 package org.dbcloud.mongodb;
@@ -339,17 +339,14 @@ public class MongoCollectionServlet extends HttpServlet{
                 }
                 case "find2" :{ 
                     org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    int skip = (int)(context.args.get("1"));
-                    int limit = (int)(context.args.get("2"));
-                    retValue = guidObject.getObject().find(filter, skip, limit);
+                    retValue = guidObject.getObject().find(filter);
                     break;
                 }
                 case "find3" :{ 
                     org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    int skip = (int)(context.args.get("2"));
-                    int limit = (int)(context.args.get("3"));
-                    retValue = guidObject.getObject().find(filter, options, skip, limit);
+                    int skip = (int)(context.args.get("1"));
+                    int limit = (int)(context.args.get("2"));
+                    retValue = guidObject.getObject().find(filter, skip, limit);
                     break;
                 }
                 case "find4" :{ 
@@ -360,7 +357,10 @@ public class MongoCollectionServlet extends HttpServlet{
                 }
                 case "find5" :{ 
                     org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().find(filter);
+                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    int skip = (int)(context.args.get("2"));
+                    int limit = (int)(context.args.get("3"));
+                    retValue = guidObject.getObject().find(filter, options, skip, limit);
                     break;
                 }
                 case "close" :{ 
@@ -384,132 +384,8 @@ public class MongoCollectionServlet extends HttpServlet{
                     retValue = guidObject.getObject().findOneAndReplace(filter, replacement, options);
                     break;
                 }
-                case "replaceOne" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document replacement = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("2").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().replaceOne(filter, replacement, options);
-                    break;
-                }
-                case "replaceOne2" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document replacement = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().replaceOne(filter, replacement);
-                    break;
-                }
-                case "findOneAndDelete" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().findOneAndDelete(filter);
-                    break;
-                }
-                case "findOneAndDelete2" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().findOneAndDelete(filter, options);
-                    break;
-                }
                 case "getDocumentClass" :{ 
                     retValue = guidObject.getObject().getDocumentClass();
-                    break;
-                }
-                case "getCodecRegistry" :{ 
-                    retValue = guidObject.getObject().getCodecRegistry();
-                    break;
-                }
-                case "drop" :{ 
-                    guidObject.getObject().drop();
-                    break;
-                }
-                case "listIndexes" :{ 
-                    retValue = guidObject.getObject().listIndexes();
-                    break;
-                }
-                case "dropIndexes" :{ 
-                    guidObject.getObject().dropIndexes();
-                    break;
-                }
-                case "updateOne" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().updateOne(filter, update);
-                    break;
-                }
-                case "updateOne2" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("2").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().updateOne(filter, update, options);
-                    break;
-                }
-                case "deleteOne" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().deleteOne(filter);
-                    break;
-                }
-                case "updateMany" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("2").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().updateMany(filter, update, options);
-                    break;
-                }
-                case "updateMany2" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().updateMany(filter, update);
-                    break;
-                }
-                case "insertMany" :{ 
-                    java.util.List documents = JSONObject.parseArray(((JSONArray)context.args.get("0")).toJSONString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().insertMany(documents, options);
-                    break;
-                }
-                case "insertMany2" :{ 
-                    java.util.List documents = JSONObject.parseArray(((JSONArray)context.args.get("0")).toJSONString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().insertMany(documents);
-                    break;
-                }
-                case "dropIndex" :{ 
-                    org.bson.Document keys = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    guidObject.getObject().dropIndex(keys);
-                    break;
-                }
-                case "dropIndex2" :{ 
-                    java.lang.String keys = (String)(context.args.get("0"));
-                    guidObject.getObject().dropIndex(keys);
-                    break;
-                }
-                case "renameCollection" :{ 
-                    org.bson.Document newCollectionNamespace = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    guidObject.getObject().renameCollection(newCollectionNamespace);
-                    break;
-                }
-                case "renameCollection2" :{ 
-                    org.bson.Document newCollectionNamespace = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    guidObject.getObject().renameCollection(newCollectionNamespace, options);
-                    break;
-                }
-                case "insertOne" :{ 
-                    org.bson.Document document = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().insertOne(document, options);
-                    break;
-                }
-                case "insertOne2" :{ 
-                    org.bson.Document document = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().insertOne(document);
-                    break;
-                }
-                case "deleteMany" :{ 
-                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().deleteMany(filter);
-                    break;
-                }
-                case "createIndexes" :{ 
-                    java.util.List indexes = JSONObject.parseArray(((JSONArray)context.args.get("0")).toJSONString(), org.bson.Document.class);
-                    retValue = guidObject.getObject().createIndexes(indexes);
                     break;
                 }
                 case "findOneAndUpdate" :{ 
@@ -534,6 +410,130 @@ public class MongoCollectionServlet extends HttpServlet{
                     org.bson.Document keys = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
                     org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
                     retValue = guidObject.getObject().createIndex(keys, options);
+                    break;
+                }
+                case "dropIndex" :{ 
+                    org.bson.Document keys = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    guidObject.getObject().dropIndex(keys);
+                    break;
+                }
+                case "dropIndex2" :{ 
+                    java.lang.String keys = (String)(context.args.get("0"));
+                    guidObject.getObject().dropIndex(keys);
+                    break;
+                }
+                case "updateMany" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    org.bson.Document options = JSON.parseObject(context.args.get("2").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().updateMany(filter, update, options);
+                    break;
+                }
+                case "updateMany2" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().updateMany(filter, update);
+                    break;
+                }
+                case "insertOne" :{ 
+                    org.bson.Document document = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().insertOne(document);
+                    break;
+                }
+                case "insertOne2" :{ 
+                    org.bson.Document document = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().insertOne(document, options);
+                    break;
+                }
+                case "drop" :{ 
+                    guidObject.getObject().drop();
+                    break;
+                }
+                case "createIndexes" :{ 
+                    java.util.List indexes = JSONObject.parseArray(((JSONArray)context.args.get("0")).toJSONString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().createIndexes(indexes);
+                    break;
+                }
+                case "getCodecRegistry" :{ 
+                    retValue = guidObject.getObject().getCodecRegistry();
+                    break;
+                }
+                case "findOneAndDelete" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().findOneAndDelete(filter);
+                    break;
+                }
+                case "findOneAndDelete2" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().findOneAndDelete(filter, options);
+                    break;
+                }
+                case "insertMany" :{ 
+                    java.util.List documents = JSONObject.parseArray(((JSONArray)context.args.get("0")).toJSONString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().insertMany(documents);
+                    break;
+                }
+                case "insertMany2" :{ 
+                    java.util.List documents = JSONObject.parseArray(((JSONArray)context.args.get("0")).toJSONString(), org.bson.Document.class);
+                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().insertMany(documents, options);
+                    break;
+                }
+                case "dropIndexes" :{ 
+                    guidObject.getObject().dropIndexes();
+                    break;
+                }
+                case "updateOne" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().updateOne(filter, update);
+                    break;
+                }
+                case "updateOne2" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document update = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    org.bson.Document options = JSON.parseObject(context.args.get("2").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().updateOne(filter, update, options);
+                    break;
+                }
+                case "deleteMany" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().deleteMany(filter);
+                    break;
+                }
+                case "replaceOne" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document replacement = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    org.bson.Document options = JSON.parseObject(context.args.get("2").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().replaceOne(filter, replacement, options);
+                    break;
+                }
+                case "replaceOne2" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document replacement = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().replaceOne(filter, replacement);
+                    break;
+                }
+                case "deleteOne" :{ 
+                    org.bson.Document filter = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    retValue = guidObject.getObject().deleteOne(filter);
+                    break;
+                }
+                case "listIndexes" :{ 
+                    retValue = guidObject.getObject().listIndexes();
+                    break;
+                }
+                case "renameCollection" :{ 
+                    org.bson.Document newCollectionNamespace = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    guidObject.getObject().renameCollection(newCollectionNamespace);
+                    break;
+                }
+                case "renameCollection2" :{ 
+                    org.bson.Document newCollectionNamespace = JSON.parseObject(context.args.get("0").toString(), org.bson.Document.class);
+                    org.bson.Document options = JSON.parseObject(context.args.get("1").toString(), org.bson.Document.class);
+                    guidObject.getObject().renameCollection(newCollectionNamespace, options);
                     break;
                 }
                 case "wait" :{ 

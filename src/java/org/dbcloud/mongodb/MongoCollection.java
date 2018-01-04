@@ -1,103 +1,121 @@
-/*! \mainpage Development Manual
- * <p>web: http://www.dbcloud.org</p>
-*  <p>mail: dbcloud@csmake.com</p>
- * <p>Copyright (c) 2017, dbcloud.org and/or its affiliates. All rights reserved.</p>
- * \section sec0  About dbcloud
- * <p>Accessing server-side database through JavaScript API.</p>
- * <p>database support <b>Mongodb Oracle MySQL sqlserver SQLite and so on</b>.</p>
- * <p>Client javascript api support IE6.0+ Chrome FireFox Wechat</p>
- *
- * \section sec1  start the basic sample 
- *  <p> Step 1:run mongod first.</p>
- *  <p> Step 2:put dbcloud.war in your servlet server webapps ,Apache Tomcat8.0 , Glass Fish Server4.x and so on.</p>
- *  <p> Step 3:open browser(Chrome FireFox IE) and put http://localhost:8080/dbcloud/, The address may be different depending on your settings</p>
- *
- * \section sec2  roadmap 
- *  <p> 1.0: mongodb support.</p>
- *  <p> 1.1: jdbc webclient javascript api support.</p>
- *  <p> 1.2: SQLite support</p>
- *  <p> 1.3: MySQL support</p>
- *  <p> 1.4: Sql server support</p>
- *  <p> 1.5: Oracle support</p>
- *  <p>  ...</p>
- *
- * \section sec3 Start to write your web application
- *  <p>Step 1:copy MongoCollection.java and MongoCollectionServlet.java from dbcloud.war /src/java/.. , into your src/java/org/dbcloud/mongodb</p>
- *  <p>Step 2:copy all *.js files in dbcloud.war /js to your js directory. JQuery is necessary. IE6.0 need to use the 1.x version and json2.js is necessary.</p>
- *  <p>Step 3:edit the web.xml, mongodb example</p>
- *@code
- * <servlet>
- * <servlet-name>MongoCollectionServlet</servlet-name>
- * <servlet-class>org.dbcloud.mongodb.MongoCollectionServlet</servlet-class>
- * <init-param>
- * <param-name>dbhost</param-name>
- * <param-value>127.0.0.1</param-value>
- * </init-param>
- * <init-param>
- * <param-name>dbport</param-name>
- * <param-value>27017</param-value>
- * </init-param>
- * <init-param>
- * <param-name>db</param-name>
- * <param-value>test</param-value>
- * </init-param>
- * <init-param>
- * <param-name>connection</param-name>
- * <param-value>test</param-value>
- * </init-param>
- * <init-param>
- * <param-name>user</param-name>
- * <param-value></param-value>
- * </init-param>
- * <init-param>
- * <param-name>password</param-name>
- * <param-value></param-value>
- * </init-param>
- * </servlet>
- * <servlet-mapping>
- * <servlet-name>MongoCollectionServlet</servlet-name>
- * <url-pattern>/org.dbcloud.mongodb.MongoCollection</url-pattern>
- * </servlet-mapping>
- *@endcode
- * <p>Step 4 edit your html file, you can see the index.html in dbcloud.war</p>
- *@code
-  *﻿<!DOCTYPE html>
- * <html >
- * <head>
- * </head>
- * <body>
- * <div id='log'></div>
- * </body>
- * <script src="js/json2.js" note='for IE6.0 ,old browser'></script>
- * <script src="js/jQuery-1.12.4.min.js" note='for IE6.0 ,new version can use JQuery 2.x'></script>
- * <script src="js/org.dbcloud.mongodb.MongoCollection.js"></script>
- * <script>
- * try {
- *  function log(msg) {
- *   $("#log").append("<p>" + msg + "</p>");
- *  }
- *  var table = new org.dbcloud.mongodb.MongoCollection();
- *  log("clear table");
- *  table.deleteMany({});
- *  log("insertOne and set options");
- *  table.insertOne({name: 'validation'}, {validation: true});
- *  log("count:" + table.count({index: {'$exists': true}}));
- *  var data = table.find({'index': {'$gt': 5}}, {projection: {'_id': 0}});
- *  log("find index > 5 and exclude _id column");
- *  log(JSON.stringify(data));
- *  log("replaceOne"); table.replaceOne({name: 'dbcloud'}, {name: 'replace',status: 0});
- *  log("updateMany with options "); 
- *  table.updateMany({'index': {'$gt': 10}},{'$set': {name: 'updateMany', status: 100, index: 100}}, {upsert: true, validation: false}); 
- *  log("find all"); 
- *  var data = table.find();
- *  log(JSON.stringify(data));
- *  log('findOneAndUpdate'); 
- *  log(JSON.stringify(table.findOneAndUpdate({'index': {'$gt': 10}}, {'$set': {name: 'findOneAndUpdate'}, '$inc': {index: -1}})));
- *  table.close();
- * } catch (e) { alert(e.message); }
- * </script>
- * </html>
- * @endcode
+/*! \page mongo MongoDB Development Manual
+ ![webmongo](https://avatars1.githubusercontent.com/u/17017373?s=460&v=4)
+
+# webmongo
+
+## About us
+
+Accessing server-side mongodb through client javascript API. This project is a branch of [dbcloud](https://github.com/csmake/dbcloud)
+
+You can do almost invoke on mongodb through the javascript API in browser.
+
+The client javascript api support `IE6.0+ Chrome FireFox and Wechat`
+
+web: http://mongo.dbcloud.org
+
+mail: webmongo@csmake.com   
+
+## Application scenarios
+
+* Rapid prototyping does not need to write server-side code.
+
+* Academic teaching and research, WYSIWYG
+
+* Enterprise internal application
+
+* Other applications that do not focus on the security of the database table structure.
+
+## Start the basic project 
+
+1. Run mongod first. 
+2. Put webmongo.war in your servlet server webapps ,Apache Tomcat8.0 , Glass Fish Server4.x and so on.
+3. Open browser(Chrome FireFox IE) and put http://localhost:8080/webmongo/, The address may be different depending on your settings
+
+## Start to write your web application
+
+1. Copy MongoCollection.java and MongoCollectionServlet.java from webmongo.war /src/java/.. , into your src/java/org/dbcloud/mongodb
+
+2. Copy all *.js files in webmongo.war /js to your js directory. JQuery is necessary. IE6.0 need to use the 1.x version and json2.js is necessary.
+
+3. Edit the web.xml, like this:
+```xml
+
+    <servlet>
+        <servlet-name>MongoCollectionServlet</servlet-name>
+        <servlet-class>org.dbcloud.mongodb.MongoCollectionServlet</servlet-class>
+        <init-param>
+            <param-name>dbhost</param-name>
+            <param-value>127.0.0.1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbport</param-name>
+            <param-value>27017</param-value>
+        </init-param> 
+        <init-param>
+            <param-name>db</param-name>
+            <param-value>test</param-value>
+        </init-param>
+        <init-param>
+            <param-name>connection</param-name>
+            <param-value>test</param-value>
+        </init-param>
+        <init-param>
+            <param-name>user</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value></param-value>
+        </init-param> 
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MongoCollectionServlet</servlet-name>
+        <url-pattern>/org.dbcloud.mongodb.MongoCollection</url-pattern>
+    </servlet-mapping> 
+```
+4. Edit your html file, you can see the index.html 
+
+```javascript
+	﻿<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			<div id='log'></div>
+		</body>
+		<script src="js/json2.js" note='for IE6.0 ,old browser'></script>
+		<script src="js/jQuery-1.12.4.min.js" note='for IE6.0 ,new version can use JQuery 2.x'></script>
+		<script src="js/org.dbcloud.mongodb.MongoCollection.js"></script>
+		<script>
+			try {
+				function log(msg) {
+					$("#log").append("<p>" + msg + "</p>");
+				}
+				var table = new org.dbcloud.mongodb.MongoCollection();
+				log("clear table");
+				table.deleteMany({});
+				log("insertOne and set options");
+				table.insertOne({name: 'validation'}, {validation: true});
+				log("count:" + table.count({index: {'$exists': true}}));
+				var data = table.find({'index': {'$gt': 5}}, {projection: {'_id': 0}});
+				log("find index > 5 and exclude _id column");
+				log(JSON.stringify(data));
+				log("replaceOne");
+				table.replaceOne({name: 'dbcloud'}, {name: 'replace', status: 0});
+				log("updateMany with options ");
+				table.updateMany({'index': {'$gt': 10}}, {'$set': {name: 'updateMany', status: 100, index: 100}}, {upsert: true, validation: false});
+				log("find all");
+				var data = table.find();
+				log(JSON.stringify(data));
+				log('findOneAndUpdate');
+				log(JSON.stringify(table.findOneAndUpdate({'index': {'$gt': 10}}, {'$set': {name: 'findOneAndUpdate'}, '$inc': {index: -1}})));
+				table.close();
+			} catch (e) {
+				alert(e.message);
+			}
+		</script>
+	</html>
+```
  */
 package org.dbcloud.mongodb;
 
@@ -129,7 +147,7 @@ import org.bson.codecs.configuration.CodecRegistry;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-//https://github.com/csmake/dbcloud.git
+//https://github.com/csmake/webmongo.git
 /**
  * The MongoCollection interface.
  *
@@ -1030,201 +1048,3 @@ public class MongoCollection {
         return list;
     }
 }
-
-/**
- * @defgroup mongoGroup mongodb javascript usage
- * @sa http://www.dbcloud.org/doc/html/
- * @{
- */
-/**
- * @page mypage2 Start to write your web application
- * @code
- *  1.copy MongoCollection.java and MongoCollectionServlet.java from dbcloud.war /src/java/.. , into your src/java/org/dbcloud/mongodb
- *
- *  2.copy all *.js files in dbcloud.war /js to your js directory. JQuery is necessary. IE6.0 need to use the 1.x version and json2.js is necessary.
- *
- *  3.edit the web.xml
- *
- * <servlet>
- * <servlet-name>MongoCollectionServlet</servlet-name>
- * <servlet-class>org.dbcloud.mongodb.MongoCollectionServlet</servlet-class>
- * <init-param>
- * <param-name>dbhost</param-name>
- * <param-value>127.0.0.1</param-value>
- * </init-param>
- * <init-param>
- * <param-name>dbport</param-name>
- * <param-value>27017</param-value>
- * </init-param>
- * <init-param>
- * <param-name>db</param-name>
- * <param-value>test</param-value>
- * </init-param>
- * <init-param>
- * <param-name>connection</param-name>
- * <param-value>test</param-value>
- * </init-param>
- * <init-param>
- * <param-name>user</param-name>
- * <param-value></param-value>
- * </init-param>
- * <init-param>
- * <param-name>password</param-name>
- * <param-value></param-value>
- * </init-param>
- * </servlet>
- * <servlet-mapping>
- * <servlet-name>MongoCollectionServlet</servlet-name>
- * <url-pattern>/org.dbcloud.mongodb.MongoCollection</url-pattern>
- * </servlet-mapping>
- *
- * 4.edit your html file, you can see the index.html in dbcloud.war
- *﻿<!DOCTYPE html>
- * <html >
- * <head>
- * </head>
- * <body>
- * <div id='log'></div>
- * </body>
- * <script src="js/json2.js" note='for IE6.0 ,old browser'></script>
- * <script src="js/jQuery-1.12.4.min.js" note='for IE6.0 ,new version can use JQuery 2.x'></script>
- * <script src="js/org.dbcloud.mongodb.MongoCollection.js"></script>
- * <script>
- * try {
- * function log(msg) {
- * $("#log").append("<p>" + msg + "</p>");
- * }
- * var table = new org.dbcloud.mongodb.MongoCollection();
- *
- * log("clear table");
- * table.deleteMany({});
- * table.dropIndexes();
- *
- * log("insertOne");
- * table.insertOne({name: 'dbcloud'});
- *
- * log("insertOne and set options");
- * table.insertOne({name: 'validation'}, {validation: true});
- *
- * log("insertMany");
- * var list = [];
- * for (var i = 0; i < 10; i++) {
- * list.push({name: 'dbcloud' + i, index: i});
- * }
- * table.insertMany(list);
- *
- * list = [];
- * for (var i = 10; i < 20; i++) {
- * list.push({name: 'dbcloud' + i, index: i});
- * }
- * table.insertMany(list, {ordered: true, validation: true});
- *
- * log("namespace:" + JSON.stringify(table.getNamespace()));
- * var data = table.find();
- * log("find all");
- * log(JSON.stringify(data));
- *
- * log("record count:" + table.count());
- *
- * log("getDocumentClass:" + JSON.stringify(table.getDocumentClass()));
- * log("getCodecRegistry:" + JSON.stringify(table.getCodecRegistry()));
- * log("count:" + table.count({index: {'$exists': true}}));
- *
- * var data = table.find({'index': {'$gt': 5}});
- * log("find index > 5"); log(JSON.stringify(data));
- *
- * var data = table.find({'index': {'$gt': 5}}, {projection: {'_id': 0}});
- * log("find index > 5 and exclude _id column"); log(JSON.stringify(data));
- *
- * var data = table.find({'index': {'$gt': 5}}, {projection: {'_id': 0}}, 2,
- * 10); log("find index > 5 and exclude _id column and skip 2 ,limit 10");
- * log(JSON.stringify(data));
- *
- * var data = table.find({'index': {'$gt': 5}},{projection: {'_id':
- * 0},sort:{index:-1},skip:1,limit:5}); log("find index > 5 and exclude _id
- * column and sort by index dec"); log(JSON.stringify(data));
- *
- * var data = table.find({'index': {'$gt': 5}}, {projection:{'_id':
- * 0},sort:{name:-1,index:1}}, 2, 10); log("find index > 5 and exclude _id
- * column and sort by name dec, index asc and skip 2 ,limit 10");
- * log(JSON.stringify(data));
- *
- * log('deleteOne which name is validation'); table.deleteOne({name:
- * 'validation'});
- *
- * log('deleteMany which index > 15'); table.deleteMany({index: {'$gt': 15}});
- * var data = table.find(); log("find all"); log(JSON.stringify(data));
- *
- * log("replaceOne"); table.replaceOne({name: 'dbcloud'}, {name: 'replace',
- * status: 0});
- *
- * log("replaceOne with options "); table.replaceOne({'index': {'$gt': 100}},
- * {name: 'replace', status: 1, index: 100}, {upsert: true}); log("find all");
- * var data = table.find(); log(JSON.stringify(data));
- *
- * log("updateOne"); table.updateOne({name: 'replace'}, {'$set': {name:
- * 'update'}, '$inc': {status: 1}});
- *
- * log("updateOne with options "); table.updateOne({'index': {'$gt': 100}},
- * {'$set': {name: 'update', status: 1, index: 100}}, {upsert: true, validation:
- * false}); log("find all"); var data = table.find(); log(JSON.stringify(data));
- *
- * log("updateMany"); table.updateMany({name: 'update'}, {'$set': {name:
- * 'updateMany'}, '$inc': {status: 1}});
- *
- * log("updateMany with options "); table.updateMany({'index': {'$gt': 10}},
- * {'$set': {name: 'updateMany', status: 100, index: 100}}, {upsert: true,
- * validation: false}); log("find all"); var data = table.find();
- * log(JSON.stringify(data));
- *
- * log('findOneAndDelete'); log(JSON.stringify(table.findOneAndDelete({'index':
- * {'$gt': 10}})));
- *
- * log('findOneAndDelete with options');
- * log(JSON.stringify(table.findOneAndDelete({'index': {'$gt': 10}},
- * {projection: {index: true, _id: false}, sort: {index: -1}})));
- *
- * log('findOneAndReplace');
- * log(JSON.stringify(table.findOneAndReplace({'index': {'$gt': 10}}, {name:
- * 'findOneAndReplace', index: 0})));
- *
- * log('findOneAndReplace with options');
- * log(JSON.stringify(table.findOneAndReplace({'index': {'$gt': 10}}, {name:
- * 'findOneAndReplace', index: 100}, {upsert: true, returnNew: true, projection:
- * {index: true, _id: false}, sort: {index: -1}}))); log("find all"); var data =
- * table.find(); log(JSON.stringify(data));
- *
- * log('findOneAndUpdate'); log(JSON.stringify(table.findOneAndUpdate({'index':
- * {'$gt': 10}}, {'$set': {name: 'findOneAndUpdate'}, '$inc': {index: -1}})));
- *
- * log('findOneAndUpdate with options');
- * log(JSON.stringify(table.findOneAndUpdate({'name': 'findOneAndUpdate'},
- * {'$set': {op: 'findOneAndUpdate'}, '$inc': {index: -10}}, {upsert: true,
- * returnNew: true, projection: {index: true, name: true, op: true, _id: false},
- * sort: {index: -1}})));
- *
- * log('createIndex'); var indexs = table.createIndex({index: -1}); log(indexs);
- * log('listIndexes: '); log(JSON.stringify(table.listIndexes()));
- *
- * table.dropIndex(indexs); table.dropIndexes(); indexs =
- * table.createIndex({index: -1}, {background: true, unique: false, name:
- * 'myindexs'}); log(JSON.stringify(indexs));
- *
- * table.dropIndexes(); log('createIndexes:');
- * log(JSON.stringify(table.createIndexes([{keys: {index: -1, name: 1}, options:
- * {unique: false, name: 'nameindexs'}}, {keys: {index: -1, name: -1}, options:
- * {unique: false, name: 'nameindexs2'}}])));
- *
- * log('listIndexes: '); log(JSON.stringify(table.listIndexes()));
- *
- * log('drop:'); table.drop(); table.close();
- *
- * } catch (e) { alert(e.message); }
- * </script>
- * </html>
- * @endcode
- */
-/**
- * @}
- */ // end of mongoGroup
-
