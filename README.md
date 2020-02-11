@@ -14,9 +14,9 @@ You can do almost invoke on database through the javascript API in browser.
 
 The client javascript api support `IE6.0+ Chrome FireFox and Wechat`
 
-web: http://www.dbcloud.org
+web: http://www.csmake.com
 
-mail: dbcloud@csmake.com
+mail: rd@csmake.com   
 
 ## Application scenarios
 
